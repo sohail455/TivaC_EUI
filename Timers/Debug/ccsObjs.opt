@@ -1,0 +1,8 @@
+"./Timer.obj"
+"./Utils.obj"
+"./main.obj"
+"./tm4c123gh6pm_startup_ccs.obj"
+"./APP/Capture_Test/Capture.obj"
+"./APP/PWM_Test/PWM_Test.obj"
+"../tm4c123ge6pm.cmd"
+-llibc.a

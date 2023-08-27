@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "terminal_manager.h": "c",
+        "terminal_color.h": "c"
+    }
+}
