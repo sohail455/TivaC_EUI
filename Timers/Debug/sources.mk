@@ -114,4 +114,5 @@ SUBDIRS := \
 . \
 APP/Capture_Test \
 APP/PWM_Test \
+APP/Periodic_Test \
 

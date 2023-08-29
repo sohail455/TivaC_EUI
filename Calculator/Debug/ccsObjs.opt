@@ -1,9 +1,0 @@
-"./Calc_manage.obj"
-"./GPIO_Program.obj"
-"./Keypad.obj"
-"./Systick.obj"
-"./lcd.obj"
-"./main.obj"
-"./tm4c123gh6pm_startup_ccs.obj"
-"../tm4c123gh6pm.cmd"
--llibc.a

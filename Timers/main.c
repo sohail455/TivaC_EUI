@@ -3,80 +3,46 @@
 #include "MEM_MAP.h"
 #include "tm4c123gh6pm.h"
 #include "Timer.h"
+#include "APP/Capture_Test/Capture.h"
 #include "APP/PWM_Test/PWM_test.h"
+#include "APP/Periodic_Test/Periodic.h"
 
+typedef enum
+{
+    PERIODIC,
+    PWM,
+    CAPTURE
+}APP_Slect_t;
 
-
+APP_Slect_t mode=PWM;
 
 int main(void)
 {
-//            PWM_TEST_Init();
-//
-//            while(1){
-//                PWM_TEST_Runnable();
-//            }
-        unsigned long first_edge=0;
-        unsigned long last_edge=0;
-        unsigned long period=0;
-        SYSCTL->RCGCGPIO |= 0x00000008;
-        SYSCTL->RCGCGPIO |= 0x00000020;
-        GPIOD->DIR &= ~0x01;
-        GPIOF->DIR |= 0x0E;
-        GPIOD->PxR[0] |=0x00000001;
-        GPIOD->AFSEL |= 0x00000001;
-        GPIOD->PCTL &= ~0x000000F;
-        GPIOD->PCTL |= 0x00000007;
-        GPIOD->DEN |= 0x01;
-        GPIOF->DEN |= 0x0E;
-        TimerInit(TIMERBLOCK2_W, TIMERA, TIMER_CFG_16BITMODE, TIMER_MODE_EDGE_TIME_F);
-        TimerEnable(TIMERBLOCK2_W, TIMERA);
+    if(mode == PERIODIC)
+    {
+        Periodic_TEST_Init();
         while(1)
         {
-            TIMER2_W->ICR = 4;
-            while((TIMER2_W->RIS & 4) == 0);
-            first_edge=TIMER2_W->TAR;
-            TIMER2_W->ICR = 4;
-            while((TIMER2_W->RIS & 4) == 0);
-            last_edge=TIMER2_W->TAR;
-            if((last_edge - first_edge) <= 0)
-            {
-                period=((last_edge - first_edge )+4294967296)/16000000;
-            }
-            else
-            {
-                period=(last_edge - first_edge )/16000000;
-            }
-            if(period < 2)
-            {
-                GPIOF->DATA[255] &=0x00;
-                GPIOF->DATA[255] = (1<<1);
-            }
-            else if(period > 2 && period <= 5)
-            {
-                GPIOF->DATA[255] &=0x00;
-                GPIOF->DATA[255] = (1<<2);
-            }
-            else if(period > 5)
-            {
-                GPIOF->DATA[255] &=0x00;
-                GPIOF->DATA[255] = (1<<3);
-            }
+            Periodic_TEST_Runnable();
+        }
     }
-//    SYSCTL->RCGCGPIO |= 0x00000020;
-//    GPIOF->DIR |= 0x0E;
-//    GPIOF->DEN |= 0x0E;
-//    TimerInit(TIMERBLOCK0, TIMERA, TIMER_CFG_32BITMODE, TIMER_MODE_PERIODIC);
-//    TimerLoadSet(TIMERBLOCK0, TIMERA, 800000);
-//    TimerEnable(TIMERBLOCK0, TIMERA);
-//    while(1)
-//    {
-//        while((TIMER0->RIS & 0x01) == 0);
-//        TIMER0->ICR=0x01;
-//        GPIOF->DATA[255]|=(7<<1);
-//        while((TIMER0->RIS & 0x01) == 0);
-//        TIMER0->ICR=0x01;
-//        GPIOF->DATA[255]&=~(7<<1);
-//    }
+    else if( mode == PWM)
+    {
+        PWM_TEST_Init();
+        while(1)
+        {
+            PWM_TEST_Runnable();
+        }
+    }
+    else if( mode == CAPTURE)
+    {
+        Capture_TEST_Init();
+        while(1)
+        {
+            Capture_TEST_Runnable();
+        }
+    }
+
 }
 
 

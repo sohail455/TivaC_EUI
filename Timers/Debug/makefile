@@ -16,6 +16,7 @@ ORDERED_OBJS += \
 "./tm4c123gh6pm_startup_ccs.obj" \
 "./APP/Capture_Test/Capture.obj" \
 "./APP/PWM_Test/PWM_Test.obj" \
+"./APP/Periodic_Test/periodic.obj" \
 "../tm4c123ge6pm.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
@@ -30,9 +31,11 @@ RMDIR := RMDIR /S/Q
 -include subdir_vars.mk
 -include APP/Capture_Test/subdir_vars.mk
 -include APP/PWM_Test/subdir_vars.mk
+-include APP/Periodic_Test/subdir_vars.mk
 -include subdir_rules.mk
 -include APP/Capture_Test/subdir_rules.mk
 -include APP/PWM_Test/subdir_rules.mk
+-include APP/Periodic_Test/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -149,7 +152,7 @@ all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 Timers.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"C:/ti/ccs1210/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GE6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Timers.map" --heap_size=0 --stack_size=512 -i"C:/ti/ccs1210/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/lib" -i"C:/ti/ccs1210/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Timers_linkInfo.xml" --rom_model -o "Timers.out" $(ORDERED_OBJS)
+	"C:/ti/ccs1210/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GE6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --check_misra="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,-19.4,20" -z -m"Timers.map" --heap_size=0 --stack_size=512 -i"C:/ti/ccs1210/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/lib" -i"C:/ti/ccs1210/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Timers_linkInfo.xml" --rom_model -o "Timers.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
@@ -163,8 +166,8 @@ Timers.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "Timer.obj" "Utils.obj" "main.obj" "tm4c123gh6pm_startup_ccs.obj" "APP\Capture_Test\Capture.obj" "APP\PWM_Test\PWM_Test.obj" 
-	-$(RM) "Timer.d" "Utils.d" "main.d" "tm4c123gh6pm_startup_ccs.d" "APP\Capture_Test\Capture.d" "APP\PWM_Test\PWM_Test.d" 
+	-$(RM) "Timer.obj" "Utils.obj" "main.obj" "tm4c123gh6pm_startup_ccs.obj" "APP\Capture_Test\Capture.obj" "APP\PWM_Test\PWM_Test.obj" "APP\Periodic_Test\periodic.obj" 
+	-$(RM) "Timer.d" "Utils.d" "main.d" "tm4c123gh6pm_startup_ccs.d" "APP\Capture_Test\Capture.d" "APP\PWM_Test\PWM_Test.d" "APP\Periodic_Test\periodic.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
