@@ -1,0 +1,11 @@
+
+#ifndef HAL_ULTRASONIC_ULTRASONIC_H_
+#define HAL_ULTRASONIC_ULTRASONIC_H_
+
+void ULTRASONIC_init(void);
+uint16_t ULTRASONIC_GetDistance(void);
+
+
+
+
+#endif /* HAL_ULTRASONIC_ULTRASONIC_H_ */

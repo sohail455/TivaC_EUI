@@ -1,0 +1,6 @@
+# FIXED
+
+APP/LDR_APP/LDR_APP.obj: ../APP/LDR_APP/LDR_APP.c
+
+../APP/LDR_APP/LDR_APP.c:
+
