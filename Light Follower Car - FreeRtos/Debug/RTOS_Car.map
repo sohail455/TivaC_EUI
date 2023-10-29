@@ -1,0 +1,752 @@
+******************************************************************************
+                  TI ARM Linker PC v20.2.7                     
+******************************************************************************
+>> Linked Tue Oct 10 08:30:40 2023
+
+OUTPUT FILE NAME:   <RTOS_Car.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00005bd9
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  00005ce2  0003a31e  R  X
+  SRAM                  20000000   00008000  000053f1  00002c0f  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00005ce8   00005ce8    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00005a1e   00005a1e    r-x .text
+  00005c8c    00005c8c    00000018   00000018    r-- .const
+  00005ca8    00005ca8    00000040   00000040    r-- .cinit
+20000000    20000000    000053f8   00000000    rw-
+  20000000    20000000    00005189   00000000    rw- .bss
+  20005190    20005190    00000200   00000000    rw- .stack
+  20005390    20005390    00000068   00000000    rw- .data
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    00005a1e     
+                  0000026c    00001b34     tasks.obj (.text)
+                  00001da0    00000d78     queue.obj (.text)
+                  00002b18    00000824     GPIO.obj (.text)
+                  0000333c    00000634     timers.obj (.text)
+                  00003970    00000502     event_groups.obj (.text)
+                  00003e72    00000002     --HOLE-- [fill = 0]
+                  00003e74    00000388     LCD.obj (.text)
+                  000041fc    00000300     Ultrasonic.obj (.text)
+                  000044fc    000002f0     Motors.obj (.text)
+                  000047ec    000002b0     port.obj (.text)
+                  00004a9c    0000028c     ADC.obj (.text)
+                  00004d28    000001b8     heap_2.obj (.text)
+                  00004ee0    00000136     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_div_t2.asm.obj (.text)
+                  00005016    0000012a     list.obj (.text)
+                  00005140    00000108     main.obj (.text)
+                  00005248    000000e6     leds.obj (.text)
+                  0000532e    00000002     --HOLE-- [fill = 0]
+                  00005330    000000da     portasm.obj (.text)
+                  0000540a    00000002     --HOLE-- [fill = 0]
+                  0000540c    000000d8     inputs.obj (.text)
+                  000054e4    000000c8     light_detection.obj (.text)
+                  000055ac    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  00005648    0000008c     tasks.obj (.text)
+                  000056d4    0000008c     system_timer.obj (.text)
+                  00005760    00000088     Button.obj (.text)
+                  000057e8    00000088     collision_avoidance.obj (.text)
+                  00005870    00000088     display.obj (.text)
+                  000058f8    0000007c     RCC.obj (.text)
+                  00005974    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.asm.obj (.text)
+                  000059ee    00000002     --HOLE-- [fill = 0]
+                  000059f0    00000070     motion_control.obj (.text)
+                  00005a60    0000006e     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_tos_t2.asm.obj (.text)
+                  00005ace    00000068                                   : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00005b36    0000005e     Delay.obj (.text)
+                  00005b94    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00005bd8    00000034                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  00005c0c    00000030     LDR.obj (.text)
+                  00005c3c    00000020     rtsv7M4_T_le_v4SPD16_eabi.lib : u_tofd_t2.asm.obj (.text)
+                  00005c5c    0000000e                                   : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00005c6a    0000000c                                   : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init)
+                  00005c76    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00005c82    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00005c86    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.const     0    00005c8c    00000018     
+                  00005c8c    00000008     collision_avoidance.obj (.const:$P$T0$1)
+                  00005c94    00000008     system_timer.obj (.const:$P$T0$1)
+                  00005c9c    00000008     port.obj (.const)
+
+.cinit     0    00005ca8    00000040     
+                  00005ca8    0000001a     (.cinit..data.load) [load image, compression = lzss]
+                  00005cc2    00000002     --HOLE-- [fill = 0]
+                  00005cc4    0000000c     (__TI_handler_table)
+                  00005cd0    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00005cd8    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.bss       0    20000000    00005189     UNINITIALIZED
+                  20000000    00005000     heap_2.obj (.bss:ucHeap)
+                  20005000    00000078     tasks.obj (.bss:pxReadyTasksLists)
+                  20005078    00000040     (.common:xQueueRegistry)
+                  200050b8    00000014     timers.obj (.bss:xActiveTimerList1)
+                  200050cc    00000014     timers.obj (.bss:xActiveTimerList2)
+                  200050e0    00000014     tasks.obj (.bss:xDelayedTaskList1)
+                  200050f4    00000014     tasks.obj (.bss:xDelayedTaskList2)
+                  20005108    00000014     tasks.obj (.bss:xPendingReadyList)
+                  2000511c    00000014     tasks.obj (.bss:xSuspendedTaskList)
+                  20005130    00000014     tasks.obj (.bss:xTasksWaitingTermination)
+                  20005144    00000008     tasks.obj (.bss)
+                  2000514c    00000008     timers.obj (.bss)
+                  20005154    00000008     heap_2.obj (.bss:xEnd)
+                  2000515c    00000008     heap_2.obj (.bss:xStart)
+                  20005164    00000004     (.common:Difference)
+                  20005168    00000004     (.common:Displaying_Q)
+                  2000516c    00000004     (.common:Period)
+                  20005170    00000004     (.common:events)
+                  20005174    00000004     (.common:lcd_h)
+                  20005178    00000004     (.common:ldr_h)
+                  2000517c    00000004     (.common:motors_h)
+                  20005180    00000004     (.common:sys_h)
+                  20005184    00000004     (.common:ultrasonic_h)
+                  20005188    00000001     (.common:counter)
+
+.data      0    20005390    00000068     UNINITIALIZED
+                  20005390    00000034     tasks.obj (.data)
+                  200053c4    0000000c     Ultrasonic.obj (.data)
+                  200053d0    0000000c     port.obj (.data)
+                  200053dc    00000008     heap_2.obj (.data)
+                  200053e4    00000008     timers.obj (.data)
+                  200053ec    00000007     scheduler.obj (.data)
+                  200053f3    00000001     main.obj (.data)
+                  200053f4    00000004     tasks.obj (.data)
+
+.stack     0    20005190    00000200     UNINITIALIZED
+                  20005190    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20005194    000001fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                         code    ro data   rw data
+       ------                         ----    -------   -------
+    .\
+       tm4c123gh6pm_startup_ccs.obj   12      620       0      
+       main.obj                       264     0         9      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         276     620       9      
+                                                               
+    .\APP\
+       tasks.obj                      140     0         24     
+    +--+------------------------------+-------+---------+---------+
+       Total:                         140     0         24     
+                                                               
+    .\APP\Collision Avoidance\
+       collision_avoidance.obj        136     8         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         136     8         0      
+                                                               
+    .\APP\Display\
+       display.obj                    136     0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         136     0         0      
+                                                               
+    .\APP\Inputs\
+       inputs.obj                     216     0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         216     0         0      
+                                                               
+    .\APP\Light Detection\
+       light_detection.obj            200     0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         200     0         0      
+                                                               
+    .\APP\Motion Control\
+       motion_control.obj             112     0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         112     0         0      
+                                                               
+    .\APP\System Timer\
+       system_timer.obj               140     8         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         140     8         0      
+                                                               
+    .\GeneralFunctions\
+       Delay.obj                      94      0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         94      0         0      
+                                                               
+    .\HAL\Button\
+       Button.obj                     136     0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         136     0         0      
+                                                               
+    .\HAL\LCD\
+       LCD.obj                        904     0         1      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         904     0         1      
+                                                               
+    .\HAL\LDR\
+       LDR.obj                        48      0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         48      0         0      
+                                                               
+    .\HAL\LEDs\
+       leds.obj                       230     0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         230     0         0      
+                                                               
+    .\HAL\Motors\
+       Motors.obj                     752     0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         752     0         0      
+                                                               
+    .\HAL\RCC\
+       RCC.obj                        124     0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         124     0         0      
+                                                               
+    .\HAL\Ultrasonic\
+       Ultrasonic.obj                 768     0         20     
+    +--+------------------------------+-------+---------+---------+
+       Total:                         768     0         20     
+                                                               
+    .\MCAL\ADC\
+       ADC.obj                        652     0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         652     0         0      
+                                                               
+    .\MCAL\GPIO\
+       GPIO.obj                       2084    0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         2084    0         0      
+                                                               
+    .\OS\
+       scheduler.obj                  0       0         7      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         0       0         7      
+                                                               
+    .\include\
+       tasks.obj                      6964    0         280    
+       queue.obj                      3448    0         64     
+       timers.obj                     1588    0         56     
+       event_groups.obj               1282    0         0      
+       port.obj                       688     8         12     
+       list.obj                       298     0         0      
+       portasm.obj                    218     0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         14486   8         412    
+                                                               
+    .\portable\MemMang\
+       heap_2.obj                     440     0         20504  
+    +--+------------------------------+-------+---------+---------+
+       Total:                         440     0         20504  
+                                                               
+    C:\ti\ccs1210\ccs\tools\compiler\ti-cgt-arm_20.2.7.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       fd_div_t2.asm.obj              310     0         0      
+       memcpy_t2.asm.obj              156     0         0      
+       memset_t2.asm.obj              122     0         0      
+       fd_tos_t2.asm.obj              110     0         0      
+       copy_decompress_lzss.c.obj     104     0         0      
+       autoinit.c.obj                 68      0         0      
+       boot_cortex_m.c.obj            52      0         0      
+       u_tofd_t2.asm.obj              32      0         0      
+       copy_decompress_none.c.obj     14      0         0      
+       copy_zero_init.c.obj           12      0         0      
+       exit.c.obj                     4       0         0      
+       pre_init.c.obj                 4       0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         988     0         0      
+                                                               
+       Stack:                         0       0         512    
+       Linker Generated:              0       62        0      
+    +--+------------------------------+-------+---------+---------+
+       Grand Total:                   23062   706       21489  
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00005cd8 records: 2, size/record: 8, table size: 16
+	.data: load addr=00005ca8, load size=0000001a bytes, run addr=20005390, run size=00000068 bytes, compression=lzss
+	.bss: load addr=00005cd0, load size=00000008 bytes, run addr=20000000, run size=00005189 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00005cc4 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                             
+-------   ----                             
+00004c13  ADC_u32ReadChannel               
+00004a9d  ADC_vidInit                      
+000057a3  Button_vidGetButtonValue         
+00005761  Button_vidInit                   
+00005c87  C$$EXIT                          
+00004399  Delay_MicroSecond                
+20005164  Difference                       
+000058b9  Display_init                     
+00005871  Display_task                     
+20005168  Displaying_Q                     
+00002d7d  GPIO_u8ReadPin                   
+0000326d  GPIO_u8ReadPort                  
+00002b19  GPIO_vidInitPort                 
+00002f21  GPIO_vidInputPin                 
+00002e51  GPIO_vidInputPinPullUp           
+00002b91  GPIO_vidOutputPin                
+000030f5  GPIO_vidSetAltFunc               
+00003041  GPIO_vidTogglePin                
+00002c8d  GPIO_vidWritePin                 
+200053ec  Glob_TaskCounts                  
+200053ee  Glob_TickCounts                  
+200053f0  Glob_TimeCount                   
+200053f4  Glob_u16Difference               
+200053c5  Glob_u8DistanceFlag              
+200053c4  Glob_u8Flag                      
+200053f6  Glob_u8Sw1                       
+200053f7  Glob_u8Sw2                       
+200053f2  Glob_u8TickFlag                  
+00003fcb  LCD_displayCharacter             
+000040b7  LCD_moveCursor                   
+00003f0f  LCD_sendCommand                  
+0000411b  LCD_vidClearScreen               
+00003e75  LCD_vidInit                      
+000041db  LCD_vidWriteNumber               
+00004087  LCD_vidWriteString               
+00005c1d  LDR_vidGetLeftBright             
+00005c2d  LDR_vidGetRightBright            
+00005c0d  LDR_vidInit                      
+0000526b  LED_turnOn                       
+00005249  LEDs_init                        
+000058f9  PLL_Init                         
+2000516c  Period                           
+00005c77  ResetISR                         
+000045cb  Speed                            
+000056d5  System_timer_task                
+000043fd  Timer0ACapture_init              
+00004293  Ultrasonic_vidGetDistance        
+000041fd  Ultrasonic_vidInit               
+20005390  __STACK_END                      
+00000200  __STACK_SIZE                     
+20005390  __STACK_TOP                      
+00005cd8  __TI_CINIT_Base                  
+00005ce8  __TI_CINIT_Limit                 
+00005cc4  __TI_Handler_Table_Base          
+00005cd0  __TI_Handler_Table_Limit         
+00005b95  __TI_auto_init_nobinit_nopinit   
+00005acf  __TI_decompress_lzss             
+00005c5d  __TI_decompress_none             
+ffffffff  __TI_pprof_out_hndl              
+ffffffff  __TI_prof_data_size              
+ffffffff  __TI_prof_data_start             
+00000000  __TI_static_base__               
+00005c6b  __TI_zero_init                   
+00005a61  __aeabi_d2f                      
+00004ee1  __aeabi_ddiv                     
+00005975  __aeabi_memclr                   
+00005975  __aeabi_memclr4                  
+00005975  __aeabi_memclr8                  
+000055ad  __aeabi_memcpy                   
+000055ad  __aeabi_memcpy4                  
+000055ad  __aeabi_memcpy8                  
+00005977  __aeabi_memset                   
+00005977  __aeabi_memset4                  
+00005977  __aeabi_memset8                  
+00005c3d  __aeabi_ui2d                     
+ffffffff  __binit__                        
+ffffffff  __c_args__                       
+UNDEFED   __mpu_init                       
+20005190  __stack                          
+20000000  __start___llvm_prf_cnts          
+20000000  __stop___llvm_prf_cnts           
+00005bd9  _c_int00_noargs                  
+0000435f  _delay_us                        
+UNDEFED   _system_post_cinit               
+00005c83  _system_pre_init                 
+00005c87  abort                            
+ffffffff  binit                            
+00005669  button_scan                      
+000057e9  collisionAvoidance_task          
+20005188  counter                          
+00004645  current_direction                
+00005b37  delay_ms                         
+00005b5b  delay_us                         
+20005170  events                           
+200053cc  finalValue                       
+00000000  g_pfnVectors                     
+200053c8  initValue                        
+0000540d  input_handling_task              
+0000412b  integer_to_string                
+20005174  lcd_h                            
+20005178  ldr_h                            
+000054e5  light_detection_task             
+00005141  main                             
+000055ad  memcpy                           
+0000597d  memset                           
+000059f1  motion_control_task              
+000044fd  motor_initialisation             
+200053f3  motor_state                      
+2000517c  motors_h                         
+00003479  pcTimerGetTimerName              
+00004d29  pvPortMalloc                     
+00001847  pvTaskIncrementMutexHeldCount    
+000038f7  pvTimerGetTimerID                
+20005390  pxCurrentTCB                     
+000047ed  pxPortInitialiseStack            
+20005180  sys_h                            
+00005649  tasks_modulesInit                
+0000280b  ucQueueGetQueueType              
+200053c0  ulIdleCycleCount                 
+00005c9c  ulMaxSyscallInterruptPriority    
+00005341  ulPortGetIPSR                    
+00001869  ulTaskNotifyTake                 
+20005184  ultrasonic_h                     
+00003e53  uxEventGroupGetNumber            
+000050f9  uxListRemove                     
+000027eb  uxQueueGetQueueNumber            
+0000273d  uxQueueMessagesWaiting           
+0000279b  uxQueueMessagesWaitingFromISR    
+00002767  uxQueueSpacesAvailable           
+00000bf3  uxTaskGetNumberOfTasks           
+00000bf9  uxTaskGetSystemState             
+00001259  uxTaskGetTaskNumber              
+00000621  uxTaskPriorityGet                
+00000649  uxTaskPriorityGetFromISR         
+00001825  uxTaskResetEventItemValue        
+0000026d  vApplicationIdleHook             
+00003e0d  vEventGroupClearBitsCallback     
+00003da7  vEventGroupDelete                
+00003dfd  vEventGroupSetBitsCallback       
+00005017  vListInitialise                  
+00005047  vListInitialiseItem              
+00005093  vListInsert                      
+00005057  vListInsertEnd                   
+000053fd  vPortEnableVFP                   
+00004931  vPortEndScheduler                
+00004955  vPortEnterCritical               
+00004997  vPortExitCritical                
+00004e21  vPortFree                        
+00004e85  vPortInitialiseBlocks            
+000053b9  vPortSVCHandler                  
+000049e9  vPortSetupTimerInterrupt         
+000053d9  vPortStartFirstTask              
+00004a05  vPortValidateInterruptPriority   
+00002a3f  vQueueAddToRegistry              
+000027c1  vQueueDelete                     
+000027f9  vQueueSetQueueNumber             
+00002a81  vQueueUnregisterQueue            
+00002abb  vQueueWaitForMessageRestricted   
+0000059d  vTaskDelay                       
+00000499  vTaskDelayUntil                  
+000003db  vTaskDelete                      
+00000aa9  vTaskEndScheduler                
+0000124b  vTaskMissedYield                 
+00001c73  vTaskNotifyGiveFromISR           
+00000ead  vTaskPlaceOnEventList            
+00000fc5  vTaskPlaceOnEventListRestricted  
+00000f21  vTaskPlaceOnUnorderedEventList   
+00001699  vTaskPriorityInherit             
+00000699  vTaskPrioritySet                 
+000008ed  vTaskResume                      
+00001279  vTaskSetTaskNumber               
+00001177  vTaskSetTimeOutState             
+00000a2d  vTaskStartScheduler              
+000007c5  vTaskSuspend                     
+00000ac5  vTaskSuspendAll                  
+00000e1d  vTaskSwitchContext               
+00003925  vTimerSetTimerID                 
+00003c19  xEventGroupClearBits             
+00003971  xEventGroupCreate                
+00003c77  xEventGroupGetBitsFromISR        
+00003cad  xEventGroupSetBits               
+00003991  xEventGroupSync                  
+00003abf  xEventGroupWaitBits              
+00004e7f  xPortGetFreeHeapSize             
+00005359  xPortPendSVHandler               
+00004879  xPortStartScheduler              
+000049c3  xPortSysTickHandler              
+00002013  xQueueCreateCountingSemaphore    
+00001eef  xQueueCreateMutex                
+00001e51  xQueueGenericCreate              
+00002405  xQueueGenericReceive             
+00001da1  xQueueGenericReset               
+00002085  xQueueGenericSend                
+00002231  xQueueGenericSendFromISR         
+00002329  xQueueGiveFromISR                
+00001f65  xQueueGiveMutexRecursive         
+000029b3  xQueueIsQueueEmptyFromISR        
+00002a09  xQueueIsQueueFullFromISR         
+0000268d  xQueuePeekFromISR                
+000025c9  xQueueReceiveFromISR             
+20005078  xQueueRegistry                   
+00001fb5  xQueueTakeMutexRecursive         
+000011a9  xTaskCheckForTimeOut             
+00000277  xTaskGenericCreate               
+00001a17  xTaskGenericNotify               
+00001b3d  xTaskGenericNotifyFromISR        
+00001651  xTaskGetCurrentTaskHandle        
+00001669  xTaskGetSchedulerState           
+00000bcf  xTaskGetTickCount                
+00000bdf  xTaskGetTickCountFromISR         
+00000cd9  xTaskIncrementTick               
+00001d55  xTaskNotifyStateClear            
+0000192d  xTaskNotifyWait                  
+00001753  xTaskPriorityDisinherit          
+00001041  xTaskRemoveFromEventList         
+000010d9  xTaskRemoveFromUnorderedEventList
+00000add  xTaskResumeAll                   
+00000981  xTaskResumeFromISR               
+0000338b  xTimerCreate                     
+0000333d  xTimerCreateTimerTask            
+000033f9  xTimerGenericCommand             
+000038b7  xTimerIsTimerActive              
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                             
+-------   ----                             
+00000000  __TI_static_base__               
+00000000  g_pfnVectors                     
+00000200  __STACK_SIZE                     
+0000026d  vApplicationIdleHook             
+00000277  xTaskGenericCreate               
+000003db  vTaskDelete                      
+00000499  vTaskDelayUntil                  
+0000059d  vTaskDelay                       
+00000621  uxTaskPriorityGet                
+00000649  uxTaskPriorityGetFromISR         
+00000699  vTaskPrioritySet                 
+000007c5  vTaskSuspend                     
+000008ed  vTaskResume                      
+00000981  xTaskResumeFromISR               
+00000a2d  vTaskStartScheduler              
+00000aa9  vTaskEndScheduler                
+00000ac5  vTaskSuspendAll                  
+00000add  xTaskResumeAll                   
+00000bcf  xTaskGetTickCount                
+00000bdf  xTaskGetTickCountFromISR         
+00000bf3  uxTaskGetNumberOfTasks           
+00000bf9  uxTaskGetSystemState             
+00000cd9  xTaskIncrementTick               
+00000e1d  vTaskSwitchContext               
+00000ead  vTaskPlaceOnEventList            
+00000f21  vTaskPlaceOnUnorderedEventList   
+00000fc5  vTaskPlaceOnEventListRestricted  
+00001041  xTaskRemoveFromEventList         
+000010d9  xTaskRemoveFromUnorderedEventList
+00001177  vTaskSetTimeOutState             
+000011a9  xTaskCheckForTimeOut             
+0000124b  vTaskMissedYield                 
+00001259  uxTaskGetTaskNumber              
+00001279  vTaskSetTaskNumber               
+00001651  xTaskGetCurrentTaskHandle        
+00001669  xTaskGetSchedulerState           
+00001699  vTaskPriorityInherit             
+00001753  xTaskPriorityDisinherit          
+00001825  uxTaskResetEventItemValue        
+00001847  pvTaskIncrementMutexHeldCount    
+00001869  ulTaskNotifyTake                 
+0000192d  xTaskNotifyWait                  
+00001a17  xTaskGenericNotify               
+00001b3d  xTaskGenericNotifyFromISR        
+00001c73  vTaskNotifyGiveFromISR           
+00001d55  xTaskNotifyStateClear            
+00001da1  xQueueGenericReset               
+00001e51  xQueueGenericCreate              
+00001eef  xQueueCreateMutex                
+00001f65  xQueueGiveMutexRecursive         
+00001fb5  xQueueTakeMutexRecursive         
+00002013  xQueueCreateCountingSemaphore    
+00002085  xQueueGenericSend                
+00002231  xQueueGenericSendFromISR         
+00002329  xQueueGiveFromISR                
+00002405  xQueueGenericReceive             
+000025c9  xQueueReceiveFromISR             
+0000268d  xQueuePeekFromISR                
+0000273d  uxQueueMessagesWaiting           
+00002767  uxQueueSpacesAvailable           
+0000279b  uxQueueMessagesWaitingFromISR    
+000027c1  vQueueDelete                     
+000027eb  uxQueueGetQueueNumber            
+000027f9  vQueueSetQueueNumber             
+0000280b  ucQueueGetQueueType              
+000029b3  xQueueIsQueueEmptyFromISR        
+00002a09  xQueueIsQueueFullFromISR         
+00002a3f  vQueueAddToRegistry              
+00002a81  vQueueUnregisterQueue            
+00002abb  vQueueWaitForMessageRestricted   
+00002b19  GPIO_vidInitPort                 
+00002b91  GPIO_vidOutputPin                
+00002c8d  GPIO_vidWritePin                 
+00002d7d  GPIO_u8ReadPin                   
+00002e51  GPIO_vidInputPinPullUp           
+00002f21  GPIO_vidInputPin                 
+00003041  GPIO_vidTogglePin                
+000030f5  GPIO_vidSetAltFunc               
+0000326d  GPIO_u8ReadPort                  
+0000333d  xTimerCreateTimerTask            
+0000338b  xTimerCreate                     
+000033f9  xTimerGenericCommand             
+00003479  pcTimerGetTimerName              
+000038b7  xTimerIsTimerActive              
+000038f7  pvTimerGetTimerID                
+00003925  vTimerSetTimerID                 
+00003971  xEventGroupCreate                
+00003991  xEventGroupSync                  
+00003abf  xEventGroupWaitBits              
+00003c19  xEventGroupClearBits             
+00003c77  xEventGroupGetBitsFromISR        
+00003cad  xEventGroupSetBits               
+00003da7  vEventGroupDelete                
+00003dfd  vEventGroupSetBitsCallback       
+00003e0d  vEventGroupClearBitsCallback     
+00003e53  uxEventGroupGetNumber            
+00003e75  LCD_vidInit                      
+00003f0f  LCD_sendCommand                  
+00003fcb  LCD_displayCharacter             
+00004087  LCD_vidWriteString               
+000040b7  LCD_moveCursor                   
+0000411b  LCD_vidClearScreen               
+0000412b  integer_to_string                
+000041db  LCD_vidWriteNumber               
+000041fd  Ultrasonic_vidInit               
+00004293  Ultrasonic_vidGetDistance        
+0000435f  _delay_us                        
+00004399  Delay_MicroSecond                
+000043fd  Timer0ACapture_init              
+000044fd  motor_initialisation             
+000045cb  Speed                            
+00004645  current_direction                
+000047ed  pxPortInitialiseStack            
+00004879  xPortStartScheduler              
+00004931  vPortEndScheduler                
+00004955  vPortEnterCritical               
+00004997  vPortExitCritical                
+000049c3  xPortSysTickHandler              
+000049e9  vPortSetupTimerInterrupt         
+00004a05  vPortValidateInterruptPriority   
+00004a9d  ADC_vidInit                      
+00004c13  ADC_u32ReadChannel               
+00004d29  pvPortMalloc                     
+00004e21  vPortFree                        
+00004e7f  xPortGetFreeHeapSize             
+00004e85  vPortInitialiseBlocks            
+00004ee1  __aeabi_ddiv                     
+00005017  vListInitialise                  
+00005047  vListInitialiseItem              
+00005057  vListInsertEnd                   
+00005093  vListInsert                      
+000050f9  uxListRemove                     
+00005141  main                             
+00005249  LEDs_init                        
+0000526b  LED_turnOn                       
+00005341  ulPortGetIPSR                    
+00005359  xPortPendSVHandler               
+000053b9  vPortSVCHandler                  
+000053d9  vPortStartFirstTask              
+000053fd  vPortEnableVFP                   
+0000540d  input_handling_task              
+000054e5  light_detection_task             
+000055ad  __aeabi_memcpy                   
+000055ad  __aeabi_memcpy4                  
+000055ad  __aeabi_memcpy8                  
+000055ad  memcpy                           
+00005649  tasks_modulesInit                
+00005669  button_scan                      
+000056d5  System_timer_task                
+00005761  Button_vidInit                   
+000057a3  Button_vidGetButtonValue         
+000057e9  collisionAvoidance_task          
+00005871  Display_task                     
+000058b9  Display_init                     
+000058f9  PLL_Init                         
+00005975  __aeabi_memclr                   
+00005975  __aeabi_memclr4                  
+00005975  __aeabi_memclr8                  
+00005977  __aeabi_memset                   
+00005977  __aeabi_memset4                  
+00005977  __aeabi_memset8                  
+0000597d  memset                           
+000059f1  motion_control_task              
+00005a61  __aeabi_d2f                      
+00005acf  __TI_decompress_lzss             
+00005b37  delay_ms                         
+00005b5b  delay_us                         
+00005b95  __TI_auto_init_nobinit_nopinit   
+00005bd9  _c_int00_noargs                  
+00005c0d  LDR_vidInit                      
+00005c1d  LDR_vidGetLeftBright             
+00005c2d  LDR_vidGetRightBright            
+00005c3d  __aeabi_ui2d                     
+00005c5d  __TI_decompress_none             
+00005c6b  __TI_zero_init                   
+00005c77  ResetISR                         
+00005c83  _system_pre_init                 
+00005c87  C$$EXIT                          
+00005c87  abort                            
+00005c9c  ulMaxSyscallInterruptPriority    
+00005cc4  __TI_Handler_Table_Base          
+00005cd0  __TI_Handler_Table_Limit         
+00005cd8  __TI_CINIT_Base                  
+00005ce8  __TI_CINIT_Limit                 
+20000000  __start___llvm_prf_cnts          
+20000000  __stop___llvm_prf_cnts           
+20005078  xQueueRegistry                   
+20005164  Difference                       
+20005168  Displaying_Q                     
+2000516c  Period                           
+20005170  events                           
+20005174  lcd_h                            
+20005178  ldr_h                            
+2000517c  motors_h                         
+20005180  sys_h                            
+20005184  ultrasonic_h                     
+20005188  counter                          
+20005190  __stack                          
+20005390  __STACK_END                      
+20005390  __STACK_TOP                      
+20005390  pxCurrentTCB                     
+200053c0  ulIdleCycleCount                 
+200053c4  Glob_u8Flag                      
+200053c5  Glob_u8DistanceFlag              
+200053c8  initValue                        
+200053cc  finalValue                       
+200053ec  Glob_TaskCounts                  
+200053ee  Glob_TickCounts                  
+200053f0  Glob_TimeCount                   
+200053f2  Glob_u8TickFlag                  
+200053f3  motor_state                      
+200053f4  Glob_u16Difference               
+200053f6  Glob_u8Sw1                       
+200053f7  Glob_u8Sw2                       
+ffffffff  __TI_pprof_out_hndl              
+ffffffff  __TI_prof_data_size              
+ffffffff  __TI_prof_data_start             
+ffffffff  __binit__                        
+ffffffff  __c_args__                       
+ffffffff  binit                            
+UNDEFED   __mpu_init                       
+UNDEFED   _system_post_cinit               
+
+[222 symbols]
